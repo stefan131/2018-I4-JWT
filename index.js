@@ -30,7 +30,7 @@ app.use('/apiv2', require('./routes/routes_apiv2'));
 // Start the server
 var port = process.env.PORT || app.get('PORT');
 
-app.listen(port, function() {
+app.listen(port, () => {
     console.log('The magic happens at http://localhost:'+ port);
 });
 

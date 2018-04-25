@@ -71,7 +71,7 @@ router.all( new RegExp("[^(\/login)]"), function (req, res, next) {
 
     var token = (req.header('X-Access-Token')) || '';
 
-    auth.decodeToken(token, function (err, payload) {
+    auth.decodeToken(token, (err, payload) => {
         if (err) {
             console.log('Error handler: ' + err.message);
             res.status((err.status || 401 )).json({error: new Error("Not authorised").message});
@@ -98,7 +98,6 @@ router.route('/login')
         //
         // Check in datasource for user & password combo.
         //
-        // Remark: result is an ARRAY (design error?)
         //
         result = users.filter(function (user) {
             if( user.username === username && user.password === password) {
