@@ -4,62 +4,11 @@
 
 // API - versie 2
 
-var express = require('express');
-var router = express.Router();
-var auth =  require('../auth/authentication');
-var users = require('../datasource/user_ds');
-
-// Sample database
-var intel_microarchitecture = [
-    {
-        name : '80486',
-        info : {
-            year: '1968',
-            clock: '100 MHz',
-            pipeline: 3
-        }
-    },
-    {
-        name : 'Sandy Brigde',
-        info : {
-            year: "2011",
-            clock: '4000 MHz',
-            pipeline: 14
-        }
-    },
-    {
-        name : 'Silvermont',
-        info : {
-            year: '2013',
-            clock: '2670 MHz',
-            pipeline: 14
-        }
-    },
-    {
-        name : 'Haswell',
-        info : {
-            year: '2013',
-            clock: '4400 MHz',
-            pipeline: 14
-        }
-    },
-    {
-        name : 'Kabylake',
-        info : {
-            year: '2016',
-            clock: '4500 MHz',
-            pipeline: 14
-        }
-    },
-    {
-        name : 'Cannonlake',
-        info : {
-            year: '2017',
-            clock: 'Not defined yet',
-            pipeline: 14
-        }
-    }
-];
+const express = require('express');
+const router = express.Router();
+const auth =  require('../auth/authentication');
+const users = require('../datasource/user_ds');
+const db = require('../datasource/intel');
 
 //
 // Catch all except login
@@ -129,8 +78,8 @@ router.get('/intel/:year?', function(req, res, next) {
     if( year ) {
         console.log('year')
 
-        result = intel_microarchitecture.filter( function(y) {
-            return ( y.info.year == year );
+        result = db.filter( function(item) {
+            return ( item.info.year == year );
         })
     } else {
         result = intel_microarchitecture;
