@@ -3,9 +3,9 @@
  */
 
 // API - versie 1
-var express = require('express');
-var router = express.Router();
-var path = require('path');
+const express = require('express');
+const router = express.Router();
+const path = require('path');
 
 // Fall back, display some info
 router.get('*', function (req, res) {

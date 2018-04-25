@@ -72,8 +72,8 @@ router.route('/login')
 //
 router.get('/intel/:year?', function(req, res, next) {
 
-    var year = req.params.year || '';
-    var result = [];
+    const year = req.params.year || '';
+    let result = [];
 
     if( year ) {
         console.log('year')
