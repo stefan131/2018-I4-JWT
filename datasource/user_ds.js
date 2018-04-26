@@ -10,6 +10,10 @@ user = [
     {
         username: 'robin',
         password: 'abcde'
+    },
+    {
+        username: 'stefan',
+        password: '123'
     }
 ];
 
