@@ -25,6 +25,7 @@ function decodeToken(token, cb) {
 
     try {
         const payload = jwt.decode(token, settings.secretkey);
+        console.log(payload);
 
         // Check if the token has expired. To do: Trigger issue in db ..
         const now = moment().unix();
